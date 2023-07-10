@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            box-sizing: border-box;
+            width: 120px;
+            height: 200px;
+            background: #ff00ff;
+            padding: 20px;
+            border: 10px solid #e07b18;
+            margin: 10px;
+        }
+
+        .box-1{
+            width: 120px;
+            height: 120px;
+            padding: 20px;
+            background: #ff00ff;
+        }
+
+        .box-2{
+            width: auto;
+            height: 80px;
+            padding: 20px;
+            background: #787878;
+        }
+        div span{
+            font-size: 24px;
+        }
+        p>span{
+            color: #000;
+        }
+        p~section{
+            color: #008800;
+        }
+        .margin-box{
+            width: 100px;
+            height: 50px;
+            background: #256236;
+            border: 10px solid #e07b18;
+            margin: 20px;
+            padding: 20px;
+
+        }
+        .margin-box-1{
+            float: left;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+
+
+<div class="box">
+    <p>
+        <span>text1</span>
+    </p>
+    <section>
+        <span>text2</span>
+    </section>
+    <section>
+        <span>text3</span>
+    </section>
+</div>
+
+
+<div class="box-1">
+    <div class="box-2">
+
+    </div>
+</div>
+<div class="margin-box">
+
+</div>
+<div class="margin-box margin-box-1">
+
+</div>
+<div class="box-1">
+    <div class="box-2">
+
+    </div>
+</div>
+
+</body>
+</html>
