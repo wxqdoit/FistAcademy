@@ -4,50 +4,67 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .box{
-            box-sizing: border-box;
-            width: 120px;
+        .box {
+            width: 500px;
             height: 200px;
             background: #ff00ff;
             padding: 20px;
             border: 10px solid #e07b18;
             margin: 10px;
+            text-indent: 20px;
         }
 
-        .box-1{
+        .box-1 {
             width: 120px;
             height: 120px;
             padding: 20px;
             background: #ff00ff;
         }
 
-        .box-2{
+        .box-2 {
             width: auto;
             height: 80px;
             padding: 20px;
             background: #787878;
         }
-        div span{
-            font-size: 24px;
+
+        div span {
+            font-size: 16px;
+            text-indent: 20px;
         }
-        p>span{
+
+        p > span {
             color: #000;
         }
-        p~section{
+
+        p ~ section {
             color: #008800;
         }
-        .margin-box{
+
+        .margin-box {
             width: 100px;
-            height: 50px;
             background: #256236;
             border: 10px solid #e07b18;
             margin: 20px;
+            height: 64px;
+            line-height: 32px;
             padding: 20px;
-
+            position: relative;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
         }
-        .margin-box-1{
+
+        .margin-box-1 {
             float: left;
 
+        }
+
+        section span {
+            letter-spacing: 5px;
+            word-spacing: 20px;
+            white-space: pre-line;
         }
 
     </style>
@@ -59,10 +76,11 @@
 
 <div class="box">
     <p>
-        <span>text1</span>
+        <span>text1 text2text2text2text2text2 text2</span>
     </p>
     <section>
-        <span>text2</span>
+        <span>letter-spacing可以用来控制字符之间的间距，
+            这里说的“字符”包括英文字母、汉字以及空格等。</span>
     </section>
     <section>
         <span>text3</span>
@@ -75,9 +93,7 @@
 
     </div>
 </div>
-<div class="margin-box">
-
-</div>
+<div class="margin-box">letter-spacing可以用来控制字符之间的间距， 这里说的“字符”包括英文字母、汉字以及空格等。</div>
 <div class="margin-box margin-box-1">
 
 </div>

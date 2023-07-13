@@ -114,7 +114,7 @@ flex布局
 - css像素：相对单位，在缩放为1的情况下1css像素=1物理像素
 - 像素密度（ppi、dpi）
 - 逻辑像素（android-dp、ios-pt）
-- 像素比（dpr）
+- 像素比（dpr）没英寸的物理像素数量，ppi越大，分辨率越高
 ```html
 dpr = 物理像素/dp或pt
 
@@ -122,8 +122,11 @@ dpr = 物理像素/dp或pt
 2倍：1pt=1dp=2px（iPhone 4s/5/6）
 3倍：1pt=1dp=3px（iPhone 6 plus）
 
-
-
 ```
+
+
+#### 移动端三个viewport
+
+
 
 
