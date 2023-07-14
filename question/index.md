@@ -130,9 +130,43 @@ sayHelloToPerson('Hello'); // 输出: "Hello, John"
 
 
 #### undefined与null的区别
+```javascript
+
+const nu = null //必须显示赋值，表示这个变量是空值，没有引用任何值
+let ud // 不用显示赋值，表示这个变量被申明了但没有赋值
+let ud1 = undefined //原始值
+console.log(nu,ud === ud1)
+console.log(nu === ud )
 
 
-#### 
+```
+
+
+#### 生拷贝与浅拷贝
+```javascript
+let obj1 = {
+    o1:1,
+    o2:2,
+}
+
+let obj2 = obj1
+
+console.log(obj1)
+console.log(obj2)
+obj1.o1 = 'change'
+console.log(obj1)
+console.log(obj2)
+/***
+ * 
+ { o1: 1, o2: 2 }
+ { o1: 1, o2: 2 }
+ { o1: 'change', o2: 2 }
+ { o1: 'change', o2: 2 }
+ */
+
+```
+
+
 
 
 

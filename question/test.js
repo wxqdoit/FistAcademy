@@ -143,7 +143,22 @@ console.log(Intl.NumberFormat().format(12254.00))
 console.log(12254.00.toLocaleString('en'))
 
 let numb = 12254
-console.log(numb && numb.replace(/(?!^)(?=(\d{3})+\.)/g, ","))
+
+
+
+
+let obj1 = {
+    o1:1,
+    o2:2,
+}
+
+let obj2 = obj1
+
+console.log(obj1)
+console.log(obj2)
+obj1.o1 = 'change'
+console.log(obj1)
+console.log(obj2)
 
 
 
