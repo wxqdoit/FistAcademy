@@ -71,21 +71,7 @@
 </head>
 <body>
 
-<div class="box"></div>
 
-
-<div class="box">
-    <p>
-        <span>text1 text2text2text2text2text2 text2</span>
-    </p>
-    <section>
-        <span>letter-spacing可以用来控制字符之间的间距，
-            这里说的“字符”包括英文字母、汉字以及空格等。</span>
-    </section>
-    <section>
-        <span>text3</span>
-    </section>
-</div>
 
 
 <div class="box-1">
@@ -102,6 +88,59 @@
 
     </div>
 </div>
+<a href="https://www.baidu.com" id="btn">baidu</a>
+<ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+</ul>
+<script>
+
+    const EventUtil = {
+        // 时间委托
+        // 事件代理
+        // 事件冒泡
+
+        addEvent(el,type,handler){
+            if(el.addEventListener){
+                el.addEventListener(type,handler,false)
+            }
+            if(el.attachEvent){
+                el.attachEvent("on" + type, handler);
+            }
+        },
+        removeEvent(el,type,handler){
+            if(el.addEventListener){
+                el.removeEventListener(type,handler,false)
+            }
+            if(el.attachEvent){
+                el.dettachEvent("on" + type, handler);
+            }
+        }
+
+    }
+
+ let btn = document.querySelector('#btn')
+ EventUtil.addEvent(btn,'click',(e)=>{
+     // e.preventDefault()
+     console.log('dddd')
+ })
+
+    // 获取父元素
+    const myList = document.getElementById('myList');
+
+    // 添加事件监听器
+    myList.addEventListener('click', (event) => {
+        console.log(event)
+        // 检查点击的目标元素是否是列表项
+        if (event.target.nodeName === 'LI') {
+            // 输出列表项的文本内容
+            console.log(event.target.textContent);
+        }
+    });
+
+</script>
 
 </body>
 </html>

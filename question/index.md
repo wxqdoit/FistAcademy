@@ -167,6 +167,17 @@ console.log(obj2)
 ```
 
 
+#### 正则表达式
+#### 排序算法
+
+
+#### 随机数生成
+```javascript
+
+console.log(Math.random())
+
+```
+
 
 
 

@@ -163,3 +163,29 @@ console.log(obj2)
 
 
 
+console.log(Math.random())
+
+
+
+const EventUtil = {
+    // 事件委托/代理：在父元素上监听特定的事件，而不是直接在每个子元素上添加事件监听器。通过这种方式，我们可以减少事件监听器的数量，提高性能，并且可以处理动态添加的子元素。
+    // 事件冒泡
+
+    addEvent(el,type,handler){
+        if(el.addEventListener){
+            el.addEventListener(type,handler,false)
+        }
+        if(el.attachEvent){
+            el.attachEvent("on" + type, handler);
+        }
+    },
+    removeEvent(el,type,handler){
+        if(el.addEventListener){
+            el.removeEventListener(type,handler,false)
+        }
+        if(el.attachEvent){
+            el.dettachEvent("on" + type, handler);
+        }
+    }
+
+}
