@@ -87,6 +87,14 @@
     <div class="box-2">
 
     </div>
+</div><div class="box-1">
+    <div class="box-2">
+
+    </div>
+</div><div class="box-1">
+    <div class="box-2">
+
+    </div>
 </div>
 <a href="https://www.baidu.com" id="btn">baidu</a>
 <ul id="myList">
@@ -95,7 +103,57 @@
     <li>Item 3</li>
     <li>Item 4</li>
 </ul>
+
+
+<div id="outer">
+    <div id="inner">
+        <button id="btn1">Click me</button>
+    </div>
+</div>
+
+
+<nav>
+    <a href="#/">Home</a>
+    <a href="#/about">About</a>
+    <a href="#/contact">Contact</a>
+</nav>
+<div id="content">
+    <!-- 这里的内容会根据路由变化而更新 -->
+</div>
 <script>
+
+    function renderPage(route) {
+        const contentDiv = document.getElementById('content');
+        let content = '';
+
+        switch (route) {
+            case '#/':
+                content = '<h2>Home Page</h2><p>Welcome to the home page!</p>';
+                break;
+            case '#/about':
+                content = '<h2>About Page</h2><p>This is the about page.</p>';
+                break;
+            case '#/contact':
+                content = '<h2>Contact Page</h2><p>Contact us at contact@example.com</p>';
+                break;
+            default:
+                content = '<h2>Page Not Found</h2><p>Sorry, the page you requested does not exist.</p>';
+        }
+
+        contentDiv.innerHTML = content;
+    }
+
+    function handleRouteChange() {
+        const route = window.location.hash;
+        console.log(route)
+        renderPage(route);
+    }
+
+    // 监听 hashchange 事件，当 URL 中的 hash 部分发生变化时触发
+    window.addEventListener('hashchange', handleRouteChange);
+
+    // 初始加载时触发一次，以显示当前 URL 对应的内容
+    handleRouteChange();
 
     const EventUtil = {
         // 时间委托
@@ -139,6 +197,54 @@
             console.log(event.target.textContent);
         }
     });
+
+
+    const outer = document.getElementById('outer');
+    const inner = document.getElementById('inner');
+    const btn1 = document.getElementById('btn1');
+
+    function eventCaptureHandler() {
+        console.log('Event captured at: ' + this.id);
+    }
+
+    outer.addEventListener('click', eventCaptureHandler, ); // 第三个参数为true，启用事件捕获阶段
+    inner.addEventListener('click', eventCaptureHandler, );
+    btn1.addEventListener('click', eventCaptureHandler, );
+    let fb = parseInt;
+    let fb2 = (item,index,arr)=>{
+        return parseInt(item,index)
+    }
+
+    ["1", "2", "3"].map(parseInt);
+    ["1", "2", "3"].map((item,index,arr)=>{
+        return parseInt(item,index)
+    })
+
+    console.log(aeee)
+
+    var aeee = 1
+
+
+
+
+    let onscroll = (handler,delay)=>{
+        let timer = null
+        return function (){
+            let context = this;
+            let args = arguments;
+            if(timer){
+                clearTimeout(timer)
+            }
+            timer = setTimeout(()=>{
+                handler.apply(context,args)
+            },delay)
+        }
+    }
+    let handler = (context,args)=>{
+        console.log(123)
+        console.log(context,args)
+    }
+    window.addEventListener('scroll',onscroll(handler,1000),false)
 
 </script>
 

@@ -189,3 +189,123 @@ const EventUtil = {
     }
 
 }
+
+
+
+function deepCopy(object) {
+    if (!object || typeof object !== "object") return object;
+
+    let newObject = Array.isArray(object) ? [] : {};
+
+    for (let key in object) {
+        if (object.hasOwnProperty(key)) {
+            newObject[key] = deepCopy(object[key]);
+        }
+    }
+
+    return newObject;
+}
+
+let obj11 =[1,2,3,new Parent()]
+console.log(deepCopy(obj11))
+
+
+function add(a, b) {
+    return a + b;
+}
+
+console.log(~3)
+console.log(~-0b00001010)
+
+let object1 = {
+    name:'111',
+    age:'111'
+};
+
+
+class Vue {
+
+
+    constructor(options) {
+        this.data = options.data
+        // this.observe(this.data,this)
+        options.mounted()
+    }
+    observe(data,ctx){
+
+        Object.keys(data).forEach((value,index)=>{
+
+            Object.defineProperty(ctx, value, {
+                get: function () {
+                    return value
+                },
+                set: function (newValue) {
+
+                    value = newValue
+                }
+            })
+        })
+    }
+
+
+}
+new Vue({
+    data:{
+
+    },
+    mounted(){
+        this.data = {
+            name:'111',
+            age:'111'
+        }
+        this.name = '1'
+        console.log(this)
+    }
+})
+
+const mySymbol = Symbol();
+console.log(typeof mySymbol); // 输出 "symbol"
+
+const mySymbolWithDescription = Symbol('This is a symbol');
+console.log(mySymbolWithDescription.toString());
+
+const age = Symbol('age')
+let use = {
+    name: 'john',
+    [age]:    1,
+    age:12
+}
+
+console.log(use[age]);
+console.log(use.age);
+console.log(use[Object.getOwnPropertySymbols(use)[0]]);
+
+Set.prototype._add = ()=>{
+    let args = arguments || [];
+    for (let i = 0; i < args.length; i++) {
+        Set.add(args[i])
+    }
+
+}
+class MySet extends Set{
+    _add(...values){
+        values.forEach((i)=>{
+            this.add(i)
+        })
+    }
+}
+const mySet = new MySet();
+mySet.add(1);
+mySet.add(5);
+mySet._add(1,2,3)
+
+
+console.log(mySet);
+
+let oo = {a:1}
+let map = new Map()
+map.set('name',1)
+map.set(oo,1)
+console.log(map.get(oo))
+
+
