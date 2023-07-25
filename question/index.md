@@ -289,3 +289,16 @@ window.addEventListener('scroll',onscroll(hander,1000),false)
 > CSRF 跨站请求攻击，攻击者诱导用户跳转到b网站，并且在b网站上带上了用户在a网站的登陆信息发送饿了攻击请求。同源策略，token验证，双重cookie验证，samesite验证
 
 > sql注入，改变sql语句的执行意义，从而攻击数据库，过滤验证参数， 限制权限，
+
+
+#### React与vue的异同
+相同点：
+都是采用组件化的开发方式
+都支持数据响应式，修改数据后视图自动更新
+都使用虚拟DOM
+不同点：
+vue是基于双向数据绑定，而react则是单向数据流
+vue使用模板语法，react使用jsx语法
+
+#### vuex的使用 redux的使用
+
