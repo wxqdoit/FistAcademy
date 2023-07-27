@@ -479,3 +479,87 @@ let myInterVal = ()=>{
 }
 myInterVal()()
 
+console.log('4>>1',0b10001/2)
+
+
+// 归并排序函数
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // 分割数组为两个子数组
+    const middle = Math.floor(arr.length / 2);
+    const leftArr = arr.slice(0, middle);
+    const rightArr = arr.slice(middle);
+
+    // 递归地对两个子数组进行归并排序
+    const sortedLeft = mergeSort(leftArr);
+    const sortedRight = mergeSort(rightArr);
+
+    // 合并两个有序子数组
+    return merge(sortedLeft, sortedRight);
+}
+
+// 归并两个有序数组为一个有序数组
+function merge(leftArr, rightArr) {
+    let result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
+        if (leftArr[leftIndex] < rightArr[rightIndex]) {
+            result.push(leftArr[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(rightArr[rightIndex]);
+            rightIndex++;
+        }
+    }
+
+    // 将剩余的元素添加到结果数组
+    while (leftIndex < leftArr.length) {
+        result.push(leftArr[leftIndex]);
+        leftIndex++;
+    }
+
+    while (rightIndex < rightArr.length) {
+        result.push(rightArr[rightIndex]);
+        rightIndex++;
+    }
+
+    return result;
+}
+
+// 测试归并排序
+const arr11 = [38, 27, 43, 3, 9, 82, 10];
+const arr22 = [64, 34, 25, 12, 22, 11, 90];
+console.log("排序前：" + arr11);
+console.log("排序后：" + mergeSort(arr11));
+console.log("排序前：" + arr22);
+console.log("排序后：" + mergeSort(arr22));
+
+
+const quickSort=(arr)=>{
+    if(arr.length<=1){
+        return arr
+    }
+
+    let pivot = arr[0]
+    let leftArr = []
+    let rightArr = []
+    for(let i = 1;i< arr.length;i++){
+        if(arr[i]>=pivot){
+            rightArr.push(arr[i])
+        }else{
+            leftArr.push(arr[i])
+        }
+    }
+    let sortedLeft = quickSort(leftArr)
+    let sortedRight = quickSort(rightArr)
+
+    return [...sortedLeft,pivot,...sortedRight]
+
+
+}
+console.log(quickSort(arr22))

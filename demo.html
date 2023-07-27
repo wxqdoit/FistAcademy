@@ -68,6 +68,7 @@
         .flex{
             display: flex;
             gap: 24px;
+            align-items: end;
         }
     </style>
 </head>
@@ -80,9 +81,7 @@
         <div class="box-2" v-click-span>
 
         </div>
-        <div class="box-2" v-text="text">
-
-        </div>
+        <div v-for="(item,index) in arr" :key="item" :style="{background:currentIndex===index?'yellow':'black',width:'20px',height:item*2+'px'}"></div>
     </div>
     <div class="margin-box">letter-spacing可以用来控制字符之间的间距， 这里说的“字符”包括英文字母、汉字以及空格等。</div>
     <div class="margin-box margin-box-1">
@@ -141,13 +140,104 @@
     new Vue({
         el:'#app',
         data:{
-            text:'text1'
+            text:'text1',
+            arr:[77,10,29,38,15,42,32,58,19,8],
+            currentIndex:null
         },
         mounted() {
-
+            this.bubbleSort(this.arr)
         },
-        method:{
+        methods:{
+            sleep(ms){
+                return new Promise((resolve,reject)=>{
+                    return setInterval(()=>{
+                        resolve()
+                    },ms)
+                })
+            },
+            //两两比较，大小交换位置，小的在前，大的在后
+            async bubbleSort(){
+                for(let i = this.arr.length;i>=2;i--){
+                    for(let n = 0;n<=i-1;n++){
+                        if(this.arr[n]>this.arr[n+1]){
+                            await this.sleep(1000)
+                            let temp = this.arr[n]
+                            this.$set(this.arr,n,this.arr[n+1])
+                            this.$set(this.arr,n+1,temp)
+                            this.currentIndex = n+1
+                        }
+                    }
+                }
+                this.currentIndex = null
+            },
+            //从第一位开始，依次与后面的每一个比较，找出最小的的那一个，然后将其与每一轮比较的首位交换位置
+            async selectSort(){
+                for(let i = 0;i<this.arr.length-1;i++){
+                    await this.sleep(1000)
 
+                    let minIndex = i
+                    for(let n = i+1;n<this.arr.length;n++){
+                        if(this.arr[minIndex]>this.arr[n]){
+
+                            minIndex = n
+
+                        }
+                    }
+                    let temp = this.arr[i]
+                    this.$set(this.arr,i,this.arr[minIndex])
+                    this.$set(this.arr,minIndex,temp)
+                    this.currentIndex = minIndex
+
+                }
+            },
+            //从数组的第二项开始，再次之前的视为一个拍好序的数组，第二项及其之后的元素等待排序，排好序的数组从后往前的每一项与待排元素比较，如果大于待排元素，则依次往后移，结束后将待排元素插入合适的位置
+            insertSort(){
+                for(let i = 1;i<this.arr.length;i++){
+                    let current = this.arr[i]
+                    let j = i-1
+                    for(;j>=0 && this.arr[j]>current;j--){
+                        console.log('arr['+j+']:', this.arr[j])
+
+                        this.arr[j+1] =  this.arr[j]
+
+                    }
+                    this.arr[j+1]=current
+
+                }
+            },
+            hillSort(arr){
+                //arr:[45,10,29,38,15,42,32,58,19,21]
+
+                if(Array.isArray(arr) && arr.length){
+                    let len = arr.length;
+                    for(let gap = Math.floor(len/2);gap>=1;gap = Math.floor(gap>>1)){
+                        for(let i = gap;i<len;i++){
+
+
+                            let temp = arr[i]
+                            let j = i
+
+
+                            for(;j>=gap && arr[j-gap]>temp;j = j-gap){
+
+                                console.log('arr['+j+']:', arr[j],'arr['+(j-gap)+']:', arr[j-gap])
+
+
+                                arr[j] = arr[j-gap]
+                            }
+                            arr[j] = temp
+                        }
+                    }
+                    console.log(arr)
+                }
+                return false
+
+            },
+            //arr = [2,3,1,5,4]
+            mergeSort(arr){
+                const middle = [2,3]
+
+            }
         },
         directives:{
             dire1:{
